@@ -1,0 +1,29 @@
+Name:                grom
+Version:             0.1
+Synopsis:            Fast nRepl client
+Description:         Intended as a comparison with grenchman
+License:             AllRightsReserved
+Author:              Chris Allen
+Maintainer:          cma@bitemyapp.com
+Stability:           Experimental
+Category:            Clojure
+Build-type:          Simple
+Cabal-version:       >=1.2
+
+Flag development
+  Description: Whether to build the server in development (interpreted) mode
+  Default: False
+
+Flag old-base
+  default: False
+  manual: False
+
+Executable grom
+  hs-source-dirs: src
+  main-is: Main.hs
+
+  Build-depends:
+    base             >= 4.4      && < 5,
+    lens             >= 3.7.6    && < 3.11,
+    bytestring       ,
+    bencode          == 0.5

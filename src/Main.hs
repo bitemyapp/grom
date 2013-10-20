@@ -1,29 +1,34 @@
 module Main where
 
-import Data.Maybe
+import System.Directory
 import System.Environment
 
+replPort file err = do
+  cwd <- getCurrentDirectory
+  envgrench <- getEnv "GRENCH_PORT"
+  putStrLn envgrench
+
 help args = putStrLn "grom eats your Clojure code and tells you to use Haskell instead"
-help_args = ["--help", "-h", "-?", "help"]
+helpArgs = ["--help", "-h", "-?", "help"]
 
 version args = putStrLn "grom 0.1\n"
-version_args = ["--version", "-v", "version"]
+versionArgs = ["--version", "-v", "version"]
 
 eval args = putStrLn "implement eval"
-eval_args = ["eval"]
+evalArgs = ["eval"]
 
 mn args = putStrLn "implement main"
-mn_args = ["main"]
+mnArgs = ["main"]
 
 repl args = putStrLn "implement repl"
-repl_args = ["repl"]
+replArgs = ["repl"]
 
 lein args = putStrLn "implement lein"
-lein_args = ["lein"]
+leinArgs = ["lein"]
 
 dispatch args = do
-    let matchees = [help_args, version_args,
-                    eval_args, mn_args, repl_args, lein_args]
+    let matchees = [helpArgs, versionArgs, evalArgs,
+                    mnArgs, replArgs, leinArgs]
     let matched = map or $ map (\cmd -> map (\arg -> elem arg args) cmd) matchees
     case matched of
       [True, _, _, _, _, _] -> help args
@@ -36,5 +41,4 @@ dispatch args = do
 -- port_err = "Couldn't read port from .nrepl-port or $GRENCH_PORT.\n"
 
 main = do
-  args <- getArgs
-  dispatch args
+  dispatch >>= args

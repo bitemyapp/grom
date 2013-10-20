@@ -26,4 +26,5 @@ Executable grom
     base             >= 4.4      && < 5,
     lens             >= 3.7.6    && < 3.11,
     bytestring       ,
-    bencode          == 0.5
+    bencode          == 0.5,
+    directory

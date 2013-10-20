@@ -41,4 +41,5 @@ dispatch args = do
 -- port_err = "Couldn't read port from .nrepl-port or $GRENCH_PORT.\n"
 
 main = do
-  dispatch >>= args
+  args <- getArgs
+  dispatch args

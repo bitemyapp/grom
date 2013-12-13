@@ -37,6 +37,7 @@ dispatch args = do
       [_, _, _, True, _, _] -> mn args
       [_, _, _, _, True, _] -> repl args
       [_, _, _, _, _, True] -> lein args
+      [_, _, _, _, _, _]    -> help args
 
 -- port_err = "Couldn't read port from .nrepl-port or $GRENCH_PORT.\n"
 

@@ -8,7 +8,7 @@ import Network.Socket
 -- Map.fromList [("code", "(+ 1 2)"), ("id", "lolsorandom"), ("op", "eval")]
 -- (BE.bShow $ BE.BList [(BE.BInt 10), (BE.BInt 20)]) ""
 -- (BE.bShow $ BE.BString $ BS.pack "blah") ""
--- (BE.bShow $ BE.BDict $ Map.fromList [("code", "(+ 1 2)"), ("id", "lolsorandom"), ("op", "eval")]
+-- (BE.bShow $ BE.BDict $ Map.fromList [("code", "(+ 1 2)"), ("id", "lolsorandom"), ("op", "eval")]) ""
 
 bstringFromString s = BE.BString $ BS.pack s
 bencodeMap m = fmap bstringFromString m
